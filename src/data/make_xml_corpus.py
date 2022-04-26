@@ -23,14 +23,9 @@ import lxml.etree
 import os
 import re
 
-from src.config import END_OF_POST_TOKEN, PROJECT_BASE_PATH
+from src.config import END_OF_POST_TOKEN, PATH_RAW_CORPUS, PATH_INTERIM_CORPUS
 from src.data.make_clean_corpus import HTML_REGEX, NOT_WORD_REGEX, NUMBER_REGEX, SUB_REDDIT_REGEX, UNICODE_REGEX, URL_FORMAT_PATTERN, WEB_URL_REGEX
 from src.utils.utilities import print_message
-
-
-# The compressed xml files are assumed to be located at this path, one subdirectory for each task.
-PATH_RAW_CORPUS = os.path.join(PROJECT_BASE_PATH, 'data/raw')
-PATH_INTERIM_CORPUS = os.path.join(PROJECT_BASE_PATH, 'data/interim')
 
 
 def get_ids(path_to_golden_truth):
