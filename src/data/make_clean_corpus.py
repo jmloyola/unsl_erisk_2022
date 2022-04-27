@@ -88,7 +88,7 @@ def generate_clean_corpus(corpus_name, corpus_kind, replace_old=True):
         If `replace_old=True` replace last generated corpus if it exists.
         If `replace_old=False` check if a previous pre-process exists, if that
         is the case print an error message, otherwise, build the pre-processed
-        coprus.
+        corpus.
     """
     interim_corpus_path = os.path.join(PATH_INTERIM_CORPUS, corpus_kind, corpus_name)
 
@@ -164,7 +164,7 @@ def generate_csv_truncated_corpus(corpus_name, corpus_kind, replace_old=True):
         If `replace_old=True` replace last generated corpus if it exists.
         If `replace_old=False` check if a previous pre-process exists, if that
         is the case print an error message, otherwise, generate the csv
-        truncated coprus.
+        truncated corpus.
     """
     partial_input_output_path = os.path.join(PATH_INTERIM_CORPUS, corpus_kind, corpus_name)
     input_file_path_train = os.path.join(partial_input_output_path, f'{corpus_name}-train-raw.txt')
