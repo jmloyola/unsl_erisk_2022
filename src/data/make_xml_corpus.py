@@ -29,8 +29,7 @@ from src.utils.utilities import print_message
 
 
 def get_ids(path_to_golden_truth):
-    """
-    Get the positive and negative users ids from the golden truth file.
+    """Get the positive and negative users ids from the golden truth file.
 
     Parameters
     ----------
@@ -59,8 +58,7 @@ def get_ids(path_to_golden_truth):
 
 
 def get_user_documents(xml_file_path, reverse_documents=False):
-    """
-    Get the user's documents.
+    """Get the user's documents.
 
     Given an xml file with the user's documents, generate a string with the
     title and body of every post concatenated.
@@ -126,8 +124,7 @@ def get_user_documents(xml_file_path, reverse_documents=False):
 
 
 def generate_raw_gambling_corpus(replace_old=True):
-    """
-    Generate the raw corpus for gambling.
+    """Generate the raw corpus for gambling.
 
     The corpus is composed of the title and body of text of every user's posts
     without pre-processing.
@@ -191,8 +188,7 @@ def generate_raw_gambling_corpus(replace_old=True):
 
 
 def generate_raw_depression_corpus(replace_old=True):
-    """
-    Generate the raw corpus for depression.
+    """Generate the raw corpus for depression.
 
     The corpus is composed of the title and body of text of every user's posts
     without pre-processing.
@@ -278,8 +274,7 @@ def generate_raw_depression_corpus(replace_old=True):
 
 
 def check_regex(path):
-    """
-    Check presence of certain regular expressions in the generate corpus.
+    """Check presence of certain regular expressions in the generate corpus.
 
     The regular expressions consider are: URLs, web URLs, subreddits links,
     number tokens and not words tokens.
@@ -333,8 +328,7 @@ def check_regex(path):
 
 
 def check_unicode_characters_used(path):
-    """
-    Check for special character not correctly obtained in the generate corpus.
+    """Check for special character not correctly obtained in the generate corpus.
 
     There were some characters that were not correctly stored in the xml files.
     Or, at least, their presence was not documented.

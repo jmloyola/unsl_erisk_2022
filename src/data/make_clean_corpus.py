@@ -63,8 +63,7 @@ def get_cleaned_post(post):
 
 
 def generate_clean_corpus(corpus_name, corpus_kind, replace_old=True):
-    """
-    Pre-process the corpus.
+    """Pre-process the corpus.
 
     The pre-processing steps followed were:
         - convert text to lower case;
@@ -153,8 +152,7 @@ def replace_html_characters(match):
 
 
 def generate_csv_truncated_corpus(corpus_name, corpus_kind, replace_old=True):
-    """
-    Generate truncated corpus using the comma separated values format.
+    """Generate truncated corpus using the comma separated values format.
 
     Parameters
     ----------
