@@ -361,8 +361,8 @@ def get_posts(url, main_subreddit, id_users_subreddit, posts_list, output_direct
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Build corpus from Reddit to be used in eRisk.")
-    parser.add_argument("corpus", help="eRisk task corpus name", choices=['depression', 'gambling'])
-    parser.add_argument("mode", help="Script mode", choices=['append', 'overwrite', 'keep'])
+    parser.add_argument("--corpus", help="eRisk task corpus name", choices=['depression', 'gambling'])
+    parser.add_argument("--mode", help="Script mode", choices=['append', 'overwrite', 'keep'])
     args = parser.parse_args()
 
     main_subreddit = 'problemgambling' if args.corpus == 'gambling' else 'depression'

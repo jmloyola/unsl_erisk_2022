@@ -240,8 +240,8 @@ def generate_csv_truncated_corpus(corpus_name, corpus_kind, replace_old=True):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Script to build a clean corpus.")
-    parser.add_argument("corpus", help="eRisk task corpus name", choices=['depression', 'gambling'])
-    parser.add_argument("kind", help="eRisk task corpus kind", choices=['xml', 'reddit'])
+    parser.add_argument("--corpus", help="eRisk task corpus name", choices=['depression', 'gambling'])
+    parser.add_argument("--kind", help="eRisk task corpus kind", choices=['xml', 'reddit'])
     args = parser.parse_args()
 
     generate_clean_corpus(corpus_name=args.corpus, corpus_kind=args.kind, replace_old=False)

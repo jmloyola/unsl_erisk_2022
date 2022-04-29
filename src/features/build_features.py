@@ -1037,9 +1037,9 @@ def generate_padded_sequential_corpus(corpus_name, corpus_kind, replace_old=True
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Script to build corpora using different document representations.")
-    parser.add_argument("corpus", help="eRisk task corpus name", choices=['depression', 'gambling'])
-    parser.add_argument("kind", help="eRisk task corpus kind", choices=['xml', 'reddit'])
-    parser.add_argument("replace_old", help="replace old corpus?", type=bool, default=False)
+    parser.add_argument("--corpus", help="eRisk task corpus name", choices=['depression', 'gambling'])
+    parser.add_argument("--kind", help="eRisk task corpus kind", choices=['xml', 'reddit'])
+    parser.add_argument("--replace_old", help="replace old corpus?", type=bool, default=False)
     args = parser.parse_args()
 
     print_message("-" * 60)

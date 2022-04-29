@@ -366,7 +366,7 @@ def check_unicode_characters_used(path):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Build corpus from the xml files provided by the eRisk organizers.")
-    parser.add_argument("corpus", help="eRisk task corpus name", choices=['depression', 'gambling'])
+    parser.add_argument("--corpus", help="eRisk task corpus name", choices=['depression', 'gambling'])
     args = parser.parse_args()
 
     if args.corpus == 'depression':
