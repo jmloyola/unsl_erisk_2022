@@ -51,8 +51,7 @@ EXCLUDED_SUBREDDITS = ['copypasta']
 
 
 def request_get(url, headers, params):
-    """
-    Send a GET request and retries up to five times in case it fails.
+    """Send a GET request and retries up to five times in case it fails.
 
     Parameters
     ----------
@@ -109,8 +108,7 @@ def request_get(url, headers, params):
 
 
 def process_comments(replies, ids, dicts, link, current_post_time, subreddit_name):
-    """
-    Recursively process comments from post or comment.
+    """Recursively process comments from post or comment.
 
     Store the author, time, and content of the comments of a post.
 
@@ -168,8 +166,7 @@ def process_comments(replies, ids, dicts, link, current_post_time, subreddit_nam
 
 
 def process_post(link, ids, posts_already_processed, subreddit_name, lock, output_directory):
-    """
-    Process post from Reddit.
+    """Process post from Reddit.
 
     Store the author, time, content and comments of a post.
 
@@ -282,8 +279,7 @@ def process_post(link, ids, posts_already_processed, subreddit_name, lock, outpu
 
 
 def sort_comments(post_comments):
-    """
-    Sort comments based on the time they were posted.
+    """Sort comments based on the time they were posted.
 
     Parameters
     ----------
@@ -306,8 +302,7 @@ def sort_comments(post_comments):
 
 
 def get_posts(url, main_subreddit, id_users_subreddit, posts_list, output_directory):
-    """
-    Get at most 1000 posts from an URL.
+    """Get at most 1000 posts from an URL.
 
     Parameters
     ----------
