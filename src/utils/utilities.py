@@ -27,8 +27,7 @@ from src.config import END_OF_POST_TOKEN
 
 
 def print_message(msg, file=sys.stdout):
-    """
-    Print message log to text stream file including the current time.
+    """Print message log to text stream file including the current time.
 
     Parameters
     ----------
@@ -41,8 +40,7 @@ def print_message(msg, file=sys.stdout):
 
 
 def print_elapsed_time(prefix=''):
-    """
-    Print the elapsed time between each call to this function.
+    """Print the elapsed time between each call to this function.
 
     If this function is call for the first time, store the current time.
     The following calls to this function report (print) the number of minutes
@@ -76,8 +74,7 @@ def print_elapsed_time(prefix=''):
 
 
 def get_documents_from_corpus(path, corpus_info_path=None):
-    """
-    Get the documents and labels from the corpus.
+    """Get the documents and labels from the corpus.
 
     Parameters
     ----------
@@ -118,3 +115,24 @@ def get_documents_from_corpus(path, corpus_info_path=None):
         with open(corpus_info_path, "w") as f:
             json.dump(fp=f, obj=corpus_info, indent='\t')
     return documents, labels
+
+
+def have_same_parameters(parameters_dict, input_file_path):
+    """Check equality between dictionary and json file.
+
+    Parameters
+    ----------
+    parameters_dict : dict
+        Dictionary with arbitrary structure.
+    input_file_path : str
+        Path to a json file.
+
+    Returns
+    -------
+    are_equal : bool
+        Flag to indicate if the dictionary and the json are equal.
+    """
+    parameters_dict_json = json.dumps(obj=parameters_dict, sort_keys=True)
+    with open(input_file_path, "r") as f:
+        input_file_json = json.dumps(json.load(fp=f), sort_keys=True)
+    return input_file_json == parameters_dict_json
