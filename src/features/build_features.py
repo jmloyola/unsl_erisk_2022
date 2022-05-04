@@ -269,7 +269,7 @@ def generate_bow_corpus(corpus_name, corpus_kind, replace_old=True, cv_params=No
     corpus_kind : {'xml', 'reddit'}
         Corpus kind.
     replace_old : bool, default=True
-        If `replace_old=True` replace last generated corpus if it exists.
+        If `replace_old=True` replace the last generated corpus if it exists.
         If `replace_old=False` check if a previous BoW corpus exists, if that
         is the case print an error message, otherwise, build the BoW
         corpus.
@@ -554,7 +554,7 @@ def generate_lda_corpus(corpus_name, corpus_kind, replace_old=True, number_topic
     corpus_kind : {'xml', 'reddit'}
         Corpus kind.
     replace_old : bool, default=True
-        If `replace_old=True` replace last generated corpus if it exists.
+        If `replace_old=True` replace the last generated corpus if it exists.
         If `replace_old=False` check if a previous LDA corpus exists, if that
         is the case print an error message, otherwise, build the LDA corpus.
     number_topics : int, default=20
@@ -708,7 +708,7 @@ def generate_lsa_corpus(corpus_name, corpus_kind, replace_old=True, num_factors=
     corpus_kind : {'xml', 'reddit'}
         Corpus kind.
     replace_old : bool, default=True
-        If `replace_old=True` replace last generated corpus if it exists.
+        If `replace_old=True` replace the last generated corpus if it exists.
         If `replace_old=False` check if a previous LSA corpus exists, if that
         is the case print an error message, otherwise, build the LSA corpus.
     num_factors : int, default=200
@@ -817,7 +817,7 @@ def generate_doc2vec_corpus(corpus_name, corpus_kind, replace_old=True, training
     corpus_kind : {'xml', 'reddit'}
         Corpus kind.
     replace_old : bool, default=True
-        If `replace_old=True` replace last generated corpus if it exists.
+        If `replace_old=True` replace the last generated corpus if it exists.
         If `replace_old=False` check if a previous doc2vec corpus exists, if
         that is the case print an error message, otherwise, build the doc2vec
         corpus.
@@ -971,7 +971,7 @@ def generate_padded_sequential_corpus(corpus_name, corpus_kind, replace_old=True
     corpus_kind : {'xml', 'reddit'}
         Corpus kind.
     replace_old : bool, default=True
-        If `replace_old=True` replace last generated corpus if it exists.
+        If `replace_old=True` replace the last generated corpus if it exists.
         If `replace_old=False` check if a previous padded sequential corpus
         exists, if that is the case print an error message, otherwise, build the
         padded sequential corpus.
@@ -1000,7 +1000,7 @@ def generate_padded_sequential_corpus(corpus_name, corpus_kind, replace_old=True
             os.remove(output_train_file_path)
             os.remove(output_test_file_path)
         else:
-            print_message(f'The datasets{output_train_file_name} and {output_test_file_name} already exist. Delete them'
+            print_message(f'The datasets {output_train_file_name} and {output_test_file_name} already exist. Delete them'
                           ' beforehand or call this function with the parameter `replace_old=True`.')
             return
 

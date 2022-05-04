@@ -85,7 +85,7 @@ def generate_clean_corpus(corpus_name, corpus_kind, replace_old=True):
     corpus_kind : {'xml', 'reddit'}
         Corpus kind.
     replace_old : bool, default=True
-        If `replace_old=True` replace last generated corpus if it exists.
+        If `replace_old=True` replace the last generated corpus if it exists.
         If `replace_old=False` check if a previous pre-process exists, if that
         is the case print an error message, otherwise, build the pre-processed
         corpus.
@@ -161,7 +161,7 @@ def generate_csv_truncated_corpus(corpus_name, corpus_kind, replace_old=True):
     corpus_kind : {'xml', 'reddit'}
         Corpus kind.
     replace_old : bool, default=True
-        If `replace_old=True` replace last generated corpus if it exists.
+        If `replace_old=True` replace the last generated corpus if it exists.
         If `replace_old=False` check if a previous pre-process exists, if that
         is the case print an error message, otherwise, generate the csv
         truncated corpus.
