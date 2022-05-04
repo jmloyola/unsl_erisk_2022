@@ -1,0 +1,30 @@
+# Byte-compiled
+__pycache__/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Log files
+.logs/
+
+# Corpus generation files
+*.txt
+*.pt
+*.csv
+*.pkl
+*.zip
+*.json
+*.npy
+*.state
+*.id2word
+*.model
+*.projection
+
+# Files related to the eRisk participation
+/competition/
+
+# Trained models path
+/models/
+
+# S33 trained models
+ss3_models/
