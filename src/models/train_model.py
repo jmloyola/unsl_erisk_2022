@@ -1041,7 +1041,7 @@ if __name__ == "__main__":
         description="Train the atemporal models using different document representations."
     )
     parser.add_argument(
-        "corpus", help="eRisk task corpus name", choices=["depression", "gambling"]
+        "--corpus", help="eRisk task corpus name", choices=["depression", "gambling"]
     )
     args = parser.parse_args()
     kind = "reddit"
