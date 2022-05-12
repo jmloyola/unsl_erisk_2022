@@ -203,7 +203,7 @@ def dcg(relevance, rank):
         return 0.0
 
     discounts = np.log2(np.arange(n_relevances) + 2)
-    return np.sum((2 ** relevance - 1) / discounts)
+    return np.sum((2**relevance - 1) / discounts)
 
 
 def ndcg(scores, y_true, p):

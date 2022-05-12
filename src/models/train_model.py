@@ -96,19 +96,19 @@ def get_classifiers_params():
                     params_list.append((model_name, params))
 
         elif model_name == "SVC":
-            c_list = [2 ** -5, 2 ** -3, 2 ** -1, 2, 2 ** 3, 2 ** 5, 2 ** 7, 2 ** 9]
+            c_list = [2**-5, 2**-3, 2**-1, 2, 2**3, 2**5, 2**7, 2**9]
             gamma_list = [
                 "scale",
-                2 ** -15,
-                2 ** -13,
-                2 ** -11,
-                2 ** -9,
-                2 ** -7,
-                2 ** -5,
-                2 ** -3,
-                2 ** -1,
+                2**-15,
+                2**-13,
+                2**-11,
+                2**-9,
+                2**-7,
+                2**-5,
+                2**-3,
+                2**-1,
                 2,
-                2 ** 3,
+                2**3,
             ]
             class_weight_list = [None, "balanced"]
             for c in c_list:
@@ -124,7 +124,7 @@ def get_classifiers_params():
                         params_list.append((model_name, params))
 
         elif model_name == "LogisticRegression":
-            c_list = [2 ** -5, 2 ** -3, 2 ** -1, 2, 2 ** 3, 2 ** 5, 2 ** 7, 2 ** 9]
+            c_list = [2**-5, 2**-3, 2**-1, 2, 2**3, 2**5, 2**7, 2**9]
             class_weight_list = [None, "balanced"]
             for c in c_list:
                 for class_weight in class_weight_list:
