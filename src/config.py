@@ -7,6 +7,7 @@ PATH_RAW_CORPUS = os.path.join(PROJECT_BASE_PATH, "data/raw")
 PATH_INTERIM_CORPUS = os.path.join(PROJECT_BASE_PATH, "data/interim")
 PATH_PROCESSED_CORPUS = os.path.join(PROJECT_BASE_PATH, "data/processed")
 PATH_MODELS = os.path.join(PROJECT_BASE_PATH, "models")
+PATH_REPORTS = os.path.join(PROJECT_BASE_PATH, "reports")
 
 # Token used to identify the end of each post.
 END_OF_POST_TOKEN = "$END_OF_POST$"
