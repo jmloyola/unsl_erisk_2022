@@ -22,7 +22,6 @@ dependencies:
   - pip:
     - arviz
     - httpx
-    - nltk
     - pyss3
     - textblob
     - transformers
