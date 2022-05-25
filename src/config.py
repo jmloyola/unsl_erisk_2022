@@ -1,12 +1,12 @@
 import os
 
-
 # Project common paths.
 PROJECT_BASE_PATH = os.path.dirname(os.path.abspath(__file__ + "/.."))
 PATH_RAW_CORPUS = os.path.join(PROJECT_BASE_PATH, "data/raw")
 PATH_INTERIM_CORPUS = os.path.join(PROJECT_BASE_PATH, "data/interim")
 PATH_PROCESSED_CORPUS = os.path.join(PROJECT_BASE_PATH, "data/processed")
 PATH_MODELS = os.path.join(PROJECT_BASE_PATH, "models")
+PATH_BEST_MODELS = os.path.join(PROJECT_BASE_PATH, "best_models")
 PATH_REPORTS = os.path.join(PROJECT_BASE_PATH, "reports")
 
 # Token used to identify the end of each post.
