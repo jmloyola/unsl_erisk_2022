@@ -70,8 +70,7 @@ def get_dataframe_best_models(corpus_name, corpus_kind="reddit", measure="f1"):
             last_date = current_date
 
     if last_date is None:
-        print_message("No file with the best models was found.")
-        return None
+        raise ValueError("No file with the best models was found.")
     file_path = os.path.join(base_path, f'{last_date.strftime("%Y_%m_%d")}{sufix}')
     print_message(
         f"Loading DataFrame with the best models for the metric {measure}: {file_path}"
