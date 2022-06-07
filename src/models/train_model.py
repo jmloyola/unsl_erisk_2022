@@ -20,36 +20,36 @@ import argparse
 import faulthandler  # Used to catch any segmentation fault errors in the logs.
 import glob
 import json
-import numpy as np
 import os
-import pandas as pd
 import pickle
 import random
+import time
+
+import numpy as np
+import pandas as pd
+import sklearn.metrics as metrics
+import torch
+import torch.nn as nn
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
-import sklearn.metrics as metrics
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.neural_network import MLPClassifier
 from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
-import time
-import torch
 from torch import optim
-import torch.nn as nn
 from torch.utils.data import DataLoader
-from torchtext.data import Field, TabularDataset, BucketIterator, Iterator
+from torchtext.data import BucketIterator, Field, Iterator, TabularDataset
 from transformers import BertTokenizer, RobertaTokenizer
 
 from src.config import (
-    PATH_INTERIM_CORPUS,
-    PATH_PROCESSED_CORPUS,
-    PATH_MODELS,
-    PICKLE_PROTOCOL,
     MAX_SEQ_LEN_BERT,
+    PATH_INTERIM_CORPUS,
+    PATH_MODELS,
+    PATH_PROCESSED_CORPUS,
+    PICKLE_PROTOCOL,
 )
-from src.models.model import EmbeddingLSTM, BERT
-from src.utils.utilities import print_message, print_elapsed_time, have_same_parameters
-
+from src.models.model import BERT, EmbeddingLSTM
+from src.utils.utilities import have_same_parameters, print_elapsed_time, print_message
 
 # Ensure that the PyTorch execution is deterministic, or at least as
 # deterministic as possible ^^.
@@ -624,7 +624,7 @@ def train_eval_pytorch_model(
     model_id = current_id if already_exists else max_id + 1
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    print_message(f"Device --> {device}")
+    print_message(f"Using the device '{device}'.")
 
     model = model.to(device)
 
@@ -782,7 +782,7 @@ def train_eval_bert_model(
     random.seed(random_seed)
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    print_message(f"Device --> {device}")
+    print_message(f"Using the device '{device}'.")
 
     input_file_path = os.path.join(PATH_INTERIM_CORPUS, corpus_kind, corpus_name)
     input_file_name_train = f"{corpus_name}_truncated_train.csv"
