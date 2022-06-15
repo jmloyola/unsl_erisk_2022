@@ -37,6 +37,7 @@ from torch.utils.tensorboard import SummaryWriter
 
 from src.config import (
     BATCH_SIZE,
+    BEST_DOC2VEC_REP,
     MAX_SEQ_LENGTH,
     PATH_BEST_MODELS,
     PATH_INTERIM_CORPUS,
@@ -89,15 +90,13 @@ if __name__ == "__main__":
     PATH_EARLIEST_MODELS = os.path.join(PATH_MODELS, kind, corpus, "earliest")
     os.makedirs(PATH_EARLIEST_MODELS, exist_ok=True)
 
-    # These are the representations used by the best EarlyModels with doc2vec.
-    # TODO: update path
-    rep_path = (
-        "08_representation_doc2vec.pkl"
-        if corpus == "depression"
-        else "09_representation_doc2vec.pkl"
-    )
     DOC2VEC_REPRESENTATIONS = os.path.join(
-        PATH_BEST_MODELS, "positive_f1", kind, corpus, "selected_models", rep_path
+        PATH_BEST_MODELS,
+        "positive_f1",
+        kind,
+        corpus,
+        "selected_models",
+        BEST_DOC2VEC_REP[corpus],
     )
     output_train_file_path = os.path.join(PATH_EARLIEST_MODELS, "train_data.pt")
     output_valid_file_path = os.path.join(PATH_EARLIEST_MODELS, "valid_data.pt")
@@ -279,7 +278,7 @@ if __name__ == "__main__":
                         epoch,
                     )
                     writer.add_scalar(
-                        "Train Loss Classific",
+                        "Train Loss Classification",
                         np.round(loss_sum_c / len(train_loader), 3),
                         epoch,
                     )
@@ -318,7 +317,7 @@ if __name__ == "__main__":
                         epoch,
                     )
                     writer.add_scalar(
-                        "Valid Loss Classific",
+                        "Valid Loss Classification",
                         np.round(val_loss_sum_c / len(valid_loader), 3),
                         epoch,
                     )
@@ -395,7 +394,7 @@ if __name__ == "__main__":
                     "confusion_matrix": confusion_matrix_text.tolist(),
                 }
 
-                print_message(f"delays: {testing_delays}")
+                print_message(f"Delays: {testing_delays}")
                 median_global_delay = np.median(testing_delays)
                 median_positive_delay = np.median(testing_delays[testing_labels == 1])
 
@@ -414,13 +413,13 @@ if __name__ == "__main__":
                     c_fp=c_fp,
                     o=50,
                 )
-                print_message(f"erde_5: {erde_5}")
-                print_message(f"erde_50: {erde_50}")
-                performance_measures["erde_5"] = erde_5
-                performance_measures["erde_50"] = erde_50
+                print_message(f"ERDE_5: {erde_5}")
+                print_message(f"ERDE_50: {erde_50}")
+                performance_measures["ERDE_5"] = erde_5
+                performance_measures["ERDE_50"] = erde_50
 
                 print_message(
-                    f"median_num_post_users_test: {median_num_post_users_test}"
+                    f"Median number of posts per user testing: {median_num_post_users_test}"
                 )
                 p = value_p(k=median_num_post_users_test)
                 f_latency_result = f_latency(
@@ -429,8 +428,8 @@ if __name__ == "__main__":
                     delays=testing_delays,
                     penalty=p,
                 )
-                print_message(f"f_latency: {f_latency_result}")
-                performance_measures["f_latency"] = f_latency_result
+                print_message(f"F_latency: {f_latency_result}")
+                performance_measures["F_latency"] = f_latency_result
 
                 performance_measures_path = model_information_path.replace(
                     ".json", "_performance.json"

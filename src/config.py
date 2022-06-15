@@ -26,3 +26,10 @@ FP_PRECISION_ELAPSED_TIMES = 3
 # EARLIEST parameters.
 MAX_SEQ_LENGTH = 300
 BATCH_SIZE = 140
+
+# TODO: You need to update this.
+# File name of representations used by the best EarlyModels with doc2vec.
+BEST_DOC2VEC_REP = {
+    "depression": "representation_doc2vec.pkl",
+    "gambling": "representation_doc2vec.pkl",
+}
