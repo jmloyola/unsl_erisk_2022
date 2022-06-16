@@ -30,6 +30,6 @@ BATCH_SIZE = 140
 # TODO: You need to update this.
 # File name of representations used by the best EarlyModels with doc2vec.
 BEST_DOC2VEC_REP = {
-    "depression": "representation_doc2vec.pkl",
-    "gambling": "representation_doc2vec.pkl",
+    "depression": "04_representation_doc2vec.pkl",
+    "gambling": "03_representation_doc2vec.pkl",
 }
