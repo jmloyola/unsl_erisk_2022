@@ -2066,6 +2066,7 @@ def one_epoch_train_earliest_model(
     _loss_sum_c = 0.0
     _loss_sum_e = 0.0
 
+    earliest_model.train()
     for i, batch in enumerate(loader):
         if type(earliest_model.RNN) == torch.nn.LSTM:
             y, x = batch

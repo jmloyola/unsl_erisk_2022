@@ -299,6 +299,13 @@ if __name__ == "__main__":
                     ) = validate_earliest_model(
                         earliest_model=model, loader=valid_loader, device=device
                     )
+
+                    # Send tensors to cpu in case the gpu is used.
+                    val_loss_sum_r = val_loss_sum_r.cpu().numpy()
+                    val_loss_sum_b = val_loss_sum_b.cpu().numpy()
+                    val_loss_sum_c = val_loss_sum_c.cpu().numpy()
+                    val_loss_sum_e = val_loss_sum_e.cpu().numpy()
+
                     elapsed_time = np.round(time.time() - initial_time, 2)
 
                     writer.add_scalar(
