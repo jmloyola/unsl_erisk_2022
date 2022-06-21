@@ -13,7 +13,7 @@ dependencies:
   - pip
   - pre-commit
   - python=3.7
-  - pytorch
+  - pytorch=1.7.1
   - tensorboard
   - torchtext=0.6.0
   - scikit-learn=0.22
