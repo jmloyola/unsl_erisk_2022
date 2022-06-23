@@ -17,27 +17,28 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
 import argparse
-from collections import Counter
-import gensim
 import glob
 import json
-import numpy as np
 import os
 import pickle
-from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
+from collections import Counter
+
+import gensim
+import numpy as np
 import torch
+from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from torch.utils.data import TensorDataset
-from torchtext.data import Field, Example, Dataset
+from torchtext.data import Dataset, Example, Field
 
 from src.config import (
+    END_OF_POST_TOKEN,
+    MAX_SEQ_LEN_BERT,
+    NUM_POSTS_FOR_BERT_REP,
     PATH_INTERIM_CORPUS,
     PATH_PROCESSED_CORPUS,
     PICKLE_PROTOCOL,
-    MAX_SEQ_LEN_BERT,
-    NUM_POSTS_FOR_BERT_REP,
-    END_OF_POST_TOKEN,
 )
-from src.utils.utilities import print_message, have_same_parameters
+from src.utils.utilities import have_same_parameters, print_message
 
 
 def get_bow_representation(documents, count_vect, tfidf_transformer):

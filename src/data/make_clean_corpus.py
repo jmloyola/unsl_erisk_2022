@@ -18,12 +18,12 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import argparse
 import os
-import pandas as pd
 import re
 
-from src.config import END_OF_POST_TOKEN, PATH_INTERIM_CORPUS, MAX_SEQ_LEN_BERT
-from src.utils.utilities import print_message
+import pandas as pd
 
+from src.config import END_OF_POST_TOKEN, MAX_SEQ_LEN_BERT, PATH_INTERIM_CORPUS
+from src.utils.utilities import print_message
 
 # Regular expressions.
 UNICODE_REGEX = re.compile(r" #(?P<unicode>\d+);")

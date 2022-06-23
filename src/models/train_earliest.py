@@ -87,7 +87,7 @@ if __name__ == "__main__":
 
     faulthandler.enable()
 
-    PATH_EARLIEST_MODELS = os.path.join(PATH_MODELS, kind, corpus, "earliest")
+    PATH_EARLIEST_MODELS = os.path.join(PATH_MODELS, kind, corpus, "earliest_gpu")
     os.makedirs(PATH_EARLIEST_MODELS, exist_ok=True)
 
     DOC2VEC_REPRESENTATIONS = os.path.join(

@@ -17,13 +17,14 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
 import argparse
-from collections import Counter
 import glob
-import lxml.etree
 import os
 import re
+from collections import Counter
 
-from src.config import END_OF_POST_TOKEN, PATH_RAW_CORPUS, PATH_INTERIM_CORPUS
+import lxml.etree
+
+from src.config import END_OF_POST_TOKEN, PATH_INTERIM_CORPUS, PATH_RAW_CORPUS
 from src.data.make_clean_corpus import (
     HTML_REGEX,
     NOT_WORD_REGEX,

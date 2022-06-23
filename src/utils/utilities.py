@@ -18,10 +18,11 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import datetime
 import json
-import numpy as np
 import os
 import sys
 import time
+
+import numpy as np
 
 from src.config import END_OF_POST_TOKEN
 

@@ -20,18 +20,18 @@ import argparse
 import glob
 import json
 import os
-import pandas as pd
 import re
-import requests
 import shutil
-from sklearn.model_selection import train_test_split
 import sys
-from threading import Thread, Lock
 import time
+from threading import Lock, Thread
 
-from src.config import END_OF_POST_TOKEN, PATH_RAW_CORPUS, PATH_INTERIM_CORPUS
+import pandas as pd
+import requests
+from sklearn.model_selection import train_test_split
+
+from src.config import END_OF_POST_TOKEN, PATH_INTERIM_CORPUS, PATH_RAW_CORPUS
 from src.utils.utilities import print_message
-
 
 MIN_NUM_WRITINGS = 30
 MIN_AVG_WORDS = 15
