@@ -16,46 +16,47 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 
 
-from abc import ABC, abstractmethod
 import copy
-import gensim
 import glob
 import json
-import numpy as np
 import os
 import pickle
-import pyss3
 import random
-from scipy.special import softmax
 import shutil
 import time
+from abc import ABC, abstractmethod
+
+import gensim
+import numpy as np
+import pyss3
 import torch
-from torch.distributions import Bernoulli
 import torch.nn as nn
-from torch.utils.data import TensorDataset, DataLoader
+from scipy.special import softmax
+from torch.distributions import Bernoulli
+from torch.utils.data import DataLoader, TensorDataset
 from torchtext.data import Iterator
 from transformers import (
     BertForSequenceClassification,
-    RobertaForSequenceClassification,
     BertTokenizer,
+    RobertaForSequenceClassification,
     RobertaTokenizer,
 )
 
 from src.config import (
-    FP_PRECISION_ELAPSED_TIMES,
-    END_OF_POST_TOKEN,
-    PICKLE_PROTOCOL,
-    MAX_SEQ_LENGTH,
     BATCH_SIZE,
+    END_OF_POST_TOKEN,
+    FP_PRECISION_ELAPSED_TIMES,
+    MAX_SEQ_LENGTH,
     NUM_POSTS_FOR_BERT_REP,
+    PICKLE_PROTOCOL,
 )
 from src.features.build_features import (
+    get_bert_representation,
     get_bow_representation,
+    get_doc2vec_representation,
     get_lda_representation,
     get_lsa_representation,
-    get_doc2vec_representation,
     get_padded_sequential_representation,
-    get_bert_representation,
 )
 from src.utils.utilities import print_message
 
@@ -2257,14 +2258,6 @@ class SS3(CompetitionModel):
         After that, we retrieve only the score for the positive class.
         If `normalize_score == 2`  the score of each user is normalized
         using the following formula:
-            softmax([acc_cv[i][pos_i], acc_cv[i][neg_i]])[0].item()
-        If `normalize_score == 3`  the score of each user is normalized
-        using the following formula:
-            softmax(
-                [acc_cv[i][pos_i] / max_value, acc_cv[i][neg_i] / max_value]
-            )[0].item()
-        If `normalize_score == 4`  the score of each user is normalized
-        using the following formula:
             acc_cv[i][pos_i] / (acc_cv[i][pos_i] + acc_cv[i][neg_i])
         In case the sum of both number is close to zero, `0.1` is returned.
 
@@ -2359,14 +2352,6 @@ class SS3(CompetitionModel):
             publications earlier.
             After that, we retrieve only the score for the positive class.
             If `normalize_score == 2`  the score of each user is normalized
-            using the following formula:
-                softmax([acc_cv[i][pos_i], acc_cv[i][neg_i]])[0].item()
-            If `normalize_score == 3`  the score of each user is normalized
-            using the following formula:
-                softmax(
-                    [acc_cv[i][pos_i] / max_value, acc_cv[i][neg_i] / max_value]
-                )[0].item()
-            If `normalize_score == 4`  the score of each user is normalized
             using the following formula:
                 acc_cv[i][pos_i] / (acc_cv[i][pos_i] + acc_cv[i][neg_i])
             In case the sum of both number is close to zero, `0.1` is returned.
@@ -2476,29 +2461,6 @@ class SS3(CompetitionModel):
                 for i in range(len(acc_cv))
             ]
         elif self.__normalize_score__ == 2:
-            # We noted, after experimentation, that the score still tend to 0.5.
-            # This was related to the division by the delay. If the value of cv
-            # is small but the delay is big, the final score will tend to 0.5.
-            scores = [
-                softmax([acc_cv[i][pos_i], acc_cv[i][neg_i]])[0].item()
-                for i in range(len(acc_cv))
-            ]
-        elif self.__normalize_score__ == 3:
-            # Since the softmax function tends to 1 or 0 if one of the values is
-            # big (> 10), and it tends to 0.5 when the values are small (close
-            # to zero), we divide the values by the maximum value. Thus we have
-            # numbers that are less than one.
-            scores = []
-            for i in range(len(acc_cv)):
-                max_value = max(acc_cv[i][pos_i], acc_cv[i][neg_i])
-                if np.isclose(max_value, 0.0):
-                    max_value = 1.0
-                scores.append(
-                    softmax(
-                        [acc_cv[i][pos_i] / max_value, acc_cv[i][neg_i] / max_value]
-                    )[0].item()
-                )
-        elif self.__normalize_score__ == 4:
             scores = [
                 acc_cv[i][pos_i] / (acc_cv[i][pos_i] + acc_cv[i][neg_i])
                 if not np.isclose(acc_cv[i][pos_i] + acc_cv[i][neg_i], 0.0)
