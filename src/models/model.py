@@ -1111,7 +1111,7 @@ class EarlyModel(CompetitionModel):
         """Deploy model for usage in the eRisk laboratory.
 
         The deployment of the model involves:
-            - Re-training base model using all the availables datasets (reddit and xml files).
+            - Re-training base model using all the available datasets (reddit and xml files).
             - Copying models' component to the deploy_path.
             - Generating a new `model_information.json` file.
 
@@ -1450,7 +1450,7 @@ class EARLIEST(nn.Module, CompetitionModel):
         if not self.is_competition:
             # Since the PyTorch version used hasn't implemented the `persistent=False`
             # parameter for the `register_buffer` function, before saving the model
-            # remove them fomr the `stated_dict`.
+            # remove them from the `stated_dict`.
             del self.Controller._epsilon
             del self.lam
             del self.time
@@ -1557,7 +1557,7 @@ class EARLIEST(nn.Module, CompetitionModel):
                     [len(posts.split(END_OF_POST_TOKEN)) for posts in documents]
                 )
 
-                # XXX: This only happends if the snapshot of the run gets corrupted.
+                # XXX: This only happens if the snapshot of the run gets corrupted.
                 #      For example, by a system reboot while saving the model.
                 if max_num_post > self.max_sequence_length:
                     initial_subset_docs_idx = max_num_post - self.max_sequence_length
@@ -1764,7 +1764,7 @@ class EARLIEST(nn.Module, CompetitionModel):
             # If (h_0, c_0) are not provided, both h_0 and c_0 default to zero.
             # https://pytorch.org/docs/stable/generated/torch.nn.LSTM.html#torch.nn.LSTM
             # In this case, the hidden state must be initialized with the previous hidden state
-            # in order to mantain the history of the input.
+            # in order to maintain the history of the input.
             output, hidden = self.RNN(rnn_input, hidden)
 
             # Predict logits for all elements in the batch.
@@ -1881,7 +1881,7 @@ class EARLIEST(nn.Module, CompetitionModel):
         """Deploy model for usage in competition.
 
         The deployment of the model involves:
-            - Re-training base model using all the availables datasets.
+            - Re-training base model using all the available datasets.
             - Copying models' component to the deploy_path.
             - Generating a new `model_information.json` file.
 
@@ -2496,7 +2496,7 @@ class SS3(CompetitionModel):
         """Deploy model for usage in competition.
 
         The deployment of the model involves:
-            - Re-training base model using all the availables datasets.
+            - Re-training base model using all the available datasets.
             - Copying models' component to the deploy_path.
             - Generating a new `model_information.json` file.
 
