@@ -26,4 +26,5 @@ repos:
     -   id: nbqa-pyupgrade
         args: [--py37-plus]
     -   id: nbqa-isort
+        args: [--line-length=120]
     -   id: nbqa-flake8
