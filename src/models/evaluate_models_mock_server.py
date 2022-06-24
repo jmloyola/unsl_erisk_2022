@@ -416,7 +416,8 @@ if __name__ == "__main__":
                 normalize_score = 2
             else:
                 normalize_score = 0
-            model_information_folder_path = os.path.dirname(path)
+            # The model_folder_path for SS3 points two directories above the state file.
+            model_information_folder_path = os.path.dirname(os.path.dirname(path))
             model = SS3.load(
                 model_folder_path=model_information_folder_path,
                 state_path=path,
