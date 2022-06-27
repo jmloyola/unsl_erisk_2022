@@ -8,6 +8,8 @@ PATH_PROCESSED_CORPUS = os.path.join(PROJECT_BASE_PATH, "data/processed")
 PATH_MODELS = os.path.join(PROJECT_BASE_PATH, "models")
 PATH_BEST_MODELS = os.path.join(PROJECT_BASE_PATH, "best_models")
 PATH_REPORTS = os.path.join(PROJECT_BASE_PATH, "reports")
+PATH_COMPETITION = os.path.join(PROJECT_BASE_PATH, "competition")
+PATH_DEPLOY = os.path.join(PATH_COMPETITION, "models")
 
 # Token used to identify the end of each post.
 END_OF_POST_TOKEN = "$END_OF_POST$"
