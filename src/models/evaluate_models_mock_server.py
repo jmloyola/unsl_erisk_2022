@@ -416,14 +416,22 @@ if __name__ == "__main__":
                 normalize_score = 2
             else:
                 normalize_score = 0
+            if not path.endswith(".ss3m"):
+                raise Exception(
+                    'The file path in `model_path` should have the extension ".ss3m" to load a SS3 model.'
+                )
             # The model_folder_path for SS3 points two directories above the state file.
             model_information_folder_path = os.path.dirname(os.path.dirname(path))
-            model_name = f"ss3_{args.corpus}"
-            # Create an empty file to hold the new SS3 model.
-            open(os.path.join(os.path.dirname(path), model_name), "a").close()
+            model_name = os.path.basename(path)[: -len(".ss3m")]
+            # Create an empty file to hold the new SS3 model state.
+            new_model_name = f"ss3_{args.corpus}"
+            new_model_state_path = os.path.join(
+                os.path.dirname(path), new_model_name + ".ss3m"
+            )
+            open(new_model_state_path, "a").close()
             model = SS3.load(
                 model_folder_path=model_information_folder_path,
-                state_path=path,
+                state_path=new_model_state_path,
                 model_name=model_name,
                 normalize_score=normalize_score,
                 **SS3_PARAMS,
