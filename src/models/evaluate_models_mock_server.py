@@ -433,7 +433,7 @@ if __name__ == "__main__":
             # Generate the model_information.json file for the deployment.
             model_information = {
                 "model_class": "SS3",
-                "model_name": model.__name__,
+                "model_name": model.__model__.__name__,
                 "model_path": None,
                 "policy_value": model.__policy_value__,
                 "normalize_score": model.__normalize_score__,
