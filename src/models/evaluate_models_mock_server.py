@@ -420,22 +420,29 @@ if __name__ == "__main__":
                 raise Exception(
                     'The file path in `model_path` should have the extension ".ss3m" to load a SS3 model.'
                 )
-            # The model_folder_path for SS3 points two directories above the state file.
+            # The model_folder_path for SS3 points two directories above the state file provided.
             model_information_folder_path = os.path.dirname(os.path.dirname(path))
             model_name = os.path.basename(path)[: -len(".ss3m")]
-            # Create an empty file to hold the new SS3 model state.
-            new_model_name = f"ss3_{args.corpus}"
-            new_model_state_path = os.path.join(
-                os.path.dirname(path), new_model_name + ".ss3m"
-            )
-            open(new_model_state_path, "a").close()
             model = SS3.load(
                 model_folder_path=model_information_folder_path,
-                state_path=new_model_state_path,
+                state_path=None,
                 model_name=model_name,
                 normalize_score=normalize_score,
                 **SS3_PARAMS,
             )
+            # Generate the model_information.json file for the deployment.
+            model_information = {
+                "model_class": "SS3",
+                "model_name": model.__name__,
+                "model_path": None,
+                "policy_value": model.__policy_value__,
+                "normalize_score": model.__normalize_score__,
+            }
+            model_information_path = os.path.join(
+                model_information_folder_path, f"model_information_{idx:02d}.json"
+            )
+            with open(model_information_path, "w") as fp:
+                json.dump(fp=fp, obj=model_information, indent="\t")
         elif args.model_type == "EARLIEST":
             model = EARLIEST.load(path, for_competition=True)
 
