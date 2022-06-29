@@ -165,8 +165,7 @@ if __name__ == "__main__":
     if at_least_one_earliest > 0:
         print_message(
             "Remember to modify the json file with the missing information of the EARLIEST models. "
-            'The two attributes missing are: the optimizer learning rate ("lr") and the value of '
-            'lambda ("lam").'
+            'The missing attribute is the value of lambda ("lam").'
         )
 
     num_models = len(args.model_path)

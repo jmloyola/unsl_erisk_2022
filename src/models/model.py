@@ -1968,6 +1968,7 @@ class EARLIEST(nn.Module, CompetitionModel):
         self.weights = current_weights
 
         # XXX: Hack. In the future store them as attributes of the model.
+        # TODO: For now, you'll need to select the best learning rate obtained.
         lr = 0.01 if "depression" in deploy_path else 0.1
         num_epochs = 600
 
