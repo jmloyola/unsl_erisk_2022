@@ -189,7 +189,10 @@ if __name__ == "__main__":
 
             model_information_folder_path = os.path.dirname(model_information_path)
             model_path = model_information["model_path"]
-            state_path = os.path.join(model_information_folder_path, model_path)
+            if model_path is not None:
+                state_path = os.path.join(model_information_folder_path, model_path)
+            else:
+                state_path = None
             model = SS3.load(
                 state_path=state_path,
                 model_folder_path=model_information_folder_path,
