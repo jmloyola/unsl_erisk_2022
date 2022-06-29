@@ -108,7 +108,7 @@ def get_model(model_id):
     )
     if not os.path.exists(model_information_path):
         raise Exception(
-            "There is no file with the model information. We can not load it."
+            f"There is no file with the model information in '{model_information_path}'. We can not load it."
         )
     with open(model_information_path, "r") as fp:
         model_information = json.load(fp=fp)
