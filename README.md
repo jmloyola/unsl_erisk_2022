@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/480838000.svg)](https://zenodo.org/badge/latestdoi/480838000)
+
 # unsl_erisk_2022
 Repository accompanying the CLEF 2022 eRisk Workshop participation for the UNSL team (Universidad Nacional de San Luis).
 
