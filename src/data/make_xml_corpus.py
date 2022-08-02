@@ -106,7 +106,7 @@ def get_user_documents(xml_file_path, reverse_documents=False):
     # XXX: Since the depression corpus has every user's post in the reverse
     #      order, that is, the most recent posts appear at the begging of the
     #      sequence while the oldest one at the end, we had to reverse the order
-    #      to mantain the correct sequence.
+    #      to maintain the correct sequence.
     if reverse_documents:
         titles.reverse()
         text.reverse()
