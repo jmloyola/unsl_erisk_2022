@@ -1209,7 +1209,7 @@ class BaselineNetwork(nn.Module):
         self.relu = nn.ReLU()
 
     def forward(self, x):
-        b = self.fc(x.detach())
+        b = self.relu(self.fc(x.detach()))
         return b
 
 
